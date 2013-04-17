@@ -1,5 +1,5 @@
 require "russianpost/version"
+require "russianpost/parcel"
 
 module Russianpost
-  # Your code goes here...
 end
