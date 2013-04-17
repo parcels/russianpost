@@ -43,11 +43,11 @@ Each `Operation` responds to the following methods. If there is no information, 
     country_from.name_en             #=> String
     
     country_oper                     #=> RussianPost::Country (Struct)
-    country_from.id                  #=> Fixnum
-    country_from.code_2a             #=> String
-    country_from.code_3a             #=> String
-    country_from.name_ru             #=> String
-    country_from.name_en             #=> String
+    country_oper.id                  #=> Fixnum
+    country_oper.code_2a             #=> String
+    country_oper.code_3a             #=> String
+    country_oper.name_ru             #=> String
+    country_oper.name_en             #=> String
     
 #### Finance parameters          
     
