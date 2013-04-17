@@ -2,6 +2,23 @@
 
 Thin wrapper around Russian Post package tracking SOAP API. Works on a per-package basis (contrary to the bulk ticket-based API). Use it at your own risk, since the API may appear unstable and require authorization in future.
 
+## Installation
+
+To install gem stand-alone:
+
+    gem install russianpost
+
+To use gem in a Rails app, add the following to your `Gemfile`:
+
+    gem "russianpost"
+
+This gem uses [Savon](http://savonrb.com/), which in turn uses [HTTPI](https://github.com/savonrb/httpi) internally. HTTPI chooses the best HTTPI library of those you have installed. For the fastest results, make sure you add [Curb](https://github.com/taf2/curb) to your `Gemfile`:
+
+    gem "curb"
+    gem "russianpost"
+
+If you use RussianPost outside Rails, `require "curb"` before requiring RussianPost.
+
 ## Usage
 
 Initialize a parcel object, passing the package barcode to the constructor:
