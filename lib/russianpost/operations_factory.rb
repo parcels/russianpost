@@ -39,13 +39,13 @@ module RussianPost
       end
 
       def process_fixnum(key, value)
-        if %i(payment value mass_rate insr_rate air_rate rate mass max_mass_ru max_mass_en).include? key
+        if [:payment, :value, :mass_rate, :insr_rate, :air_rate, :rate, :mass, :max_mass_ru, :max_mass_en].include? key
           value.to_i
         end
       end
 
       def process_address(key, value)
-        if %i(destination_address operation_address).include? key
+        if [:destination_address, :operation_address].include? key
           RussianPost::Address.new(
             value[:index],
             value[:description])
@@ -53,7 +53,7 @@ module RussianPost
       end
 
       def process_country(key, value)
-        if %i(mail_direct country_from country_oper).include? key
+        if [:mail_direct, :country_from, :country_oper].include? key
           RussianPost::Country.new(
             value[:id] ? value[:id].to_i : nil,
             value[:code_2a],
