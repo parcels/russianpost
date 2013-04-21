@@ -5,9 +5,9 @@ module RussianPost
   class Parcel
     attr_reader :barcode, :client
 
-    def initialize(barcode, client: Client)
+    def initialize(barcode, opts = {})
       @barcode = barcode.upcase
-      @client  = client.new
+      @client  = (opts[:client] || Client).new
 
       raise InvalidBarcode unless barcode_is_valid?
     end

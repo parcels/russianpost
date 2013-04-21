@@ -10,8 +10,8 @@ module RussianPost
       @savon     = Savon.client(endpoint: endpoint, namespace: namespace, log: false)
     end
 
-    def call(barcode: nil)
-      message = { "wsdl:Barcode" => barcode, "wsdl:MessageType" => "0" }
+    def call(opts = {barcode: nil})
+      message = { "wsdl:Barcode" => opts[:barcode], "wsdl:MessageType" => "0" }
       response = savon.call("OperationHistoryRequest", message: message)
 
       response.to_hash[:operation_history_data][:history_record]
