@@ -7,7 +7,7 @@ module RussianPost
     def initialize
       @endpoint  = "http://voh.russianpost.ru:8080/niips-operationhistory-web/OperationHistory"
       @namespace = "http://russianpost.org/operationhistory/data"
-      @savon     = Savon.client(endpoint: endpoint, namespace: namespace)
+      @savon     = Savon.client(endpoint: endpoint, namespace: namespace, log: false)
     end
 
     def call(barcode: nil)

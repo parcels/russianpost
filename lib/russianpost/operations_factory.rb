@@ -4,7 +4,11 @@ module RussianPost
   module OperationsFactory
     class << self
       def build(operations_hash)
-        operations_hash.map { |o| build_operation(o) }
+        if operations_hash
+          operations_hash.map { |o| build_operation(o) }
+        else
+          []
+        end
       end
 
       def build_operation(operation_hash)
