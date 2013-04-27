@@ -7,16 +7,18 @@ module RussianPost
       raise InvalidBarcode unless valid?
     end
 
-    def valid?
-      barcode =~ /\A([A-Z]{2}\d{9}[A-Z]{2})|(\d{14})\z/
-    end
-
     def to_s
       barcode
     end
 
     def to_str
       to_s
+    end
+
+    private
+
+    def valid?
+      barcode =~ /\A([A-Z]{2}\d{9}[A-Z]{2})|(\d{14})\z/
     end
   end
 
