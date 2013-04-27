@@ -3,7 +3,7 @@ require "russianpost/barcode_validator"
 module RussianPost
   class Barcode
     extend Forwardable
-    
+
     def_delegator :barcode, :=~
 
     attr_reader :barcode
@@ -18,7 +18,7 @@ module RussianPost
     end
 
     def digits
-      barcode[/\d+/].split("").map(&:to_i)
+      barcode[/\d+/].split("").map { |d| d.to_i }
     end
 
     private
