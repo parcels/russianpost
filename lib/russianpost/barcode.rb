@@ -13,10 +13,6 @@ module RussianPost
       barcode
     end
 
-    def to_str
-      to_s
-    end
-
     private
 
     def valid?
