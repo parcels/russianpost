@@ -2,6 +2,10 @@ require "russianpost/barcode_validator"
 
 module RussianPost
   class Barcode
+    extend Forwardable
+    
+    def_delegator :barcode, :=~
+
     attr_reader :barcode
 
     def initialize(barcode)
@@ -13,10 +17,14 @@ module RussianPost
       barcode
     end
 
+    def digits
+      barcode[/\d+/].split("").map(&:to_i)
+    end
+
     private
 
     def valid?
-      BarcodeValidator.validate(barcode)
+      BarcodeValidator.validate(self)
     end
   end
 

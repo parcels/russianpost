@@ -23,15 +23,11 @@ module RussianPost
     private
     
     def checkdigit_matches?
-      barcode_digits.last == checksum
-    end
-
-    def barcode_digits
-      barcode[/\d+/].split("").map(&:to_i)
+      barcode.digits.last == checksum
     end
     
     def checksum
-      product = barcode_digits[0..-2].zip(WEIGHT_FACTORS).map{|i, j| i * j}.inject(:+)
+      product = barcode.digits[0..-2].zip(WEIGHT_FACTORS).map{|i, j| i * j}.inject(:+)
       mod = (11 - product) % 11
     end
 
