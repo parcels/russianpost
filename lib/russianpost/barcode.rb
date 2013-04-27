@@ -4,6 +4,11 @@ module RussianPost
 
     def initialize(barcode)
       @barcode = barcode
+      raise InvalidBarcode unless valid?
+    end
+
+    def valid?
+      barcode =~ /\A([A-Z]{2}\d{9}[A-Z]{2})|(\d{14})\z/
     end
 
     def to_s
@@ -14,4 +19,6 @@ module RussianPost
       to_s
     end
   end
+
+  class InvalidBarcode < ArgumentError; end
 end
