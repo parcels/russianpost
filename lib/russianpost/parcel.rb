@@ -6,7 +6,7 @@ module RussianPost
     attr_reader :barcode, :client
 
     def initialize(barcode, opts = {})
-      @barcode = Barcode.new(barcode.upcase)
+      @barcode = Barcode.new(barcode)
       @client  = (opts[:client] || Client).new
     end
 

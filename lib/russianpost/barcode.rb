@@ -3,7 +3,7 @@ module RussianPost
     attr_reader :barcode
 
     def initialize(barcode)
-      @barcode = barcode
+      @barcode = barcode.strip.upcase
       raise InvalidBarcode unless valid?
     end
 
