@@ -39,4 +39,8 @@ class ParcelMetaTest < MiniTest::Unit::TestCase
     location = RussianPost::Address.new("127576", "Москва 576")
     assert_equal location, parcel.location
   end
+
+  def test_knows_parcel_mass
+    assert_equal 281, parcel.mass
+  end
 end

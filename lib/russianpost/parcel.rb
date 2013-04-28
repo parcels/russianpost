@@ -19,6 +19,10 @@ module RussianPost
       operations.last.operation_address
     end
 
+    def mass
+      operations.map(&:mass).max
+    end
+
     private
 
     def fetch_operations
