@@ -24,3 +24,19 @@ class ParcelTest < MiniTest::Unit::TestCase
     end
   end
 end
+
+class ParcelMetaTest < MiniTest::Unit::TestCase
+  attr_reader :parcel
+
+  def setup
+    VCR.use_cassette :valid_barcode do
+      @parcel = RussianPost::Parcel.new("RD025500807SE")
+      parcel.operations
+    end
+  end  
+
+  def test_knows_current_location
+    location = RussianPost::Address.new("127576", "Москва 576")
+    assert_equal location, parcel.location
+  end
+end

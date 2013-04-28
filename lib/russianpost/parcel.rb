@@ -15,6 +15,10 @@ module RussianPost
       @operations ||= fetch_operations
     end
 
+    def location
+      operations.last.operation_address
+    end
+
     private
 
     def fetch_operations
