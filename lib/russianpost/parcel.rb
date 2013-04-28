@@ -1,15 +1,14 @@
 require "russianpost/client"
 require "russianpost/operations_factory"
+require "russianpost/barcode"
 
 module RussianPost
   class Parcel
     attr_reader :barcode, :client
 
     def initialize(barcode, opts = {})
-      @barcode = barcode.upcase
+      @barcode = Barcode.new(barcode)
       @client  = (opts[:client] || Client).new
-
-      raise InvalidBarcode unless barcode_is_valid?
     end
 
     def operations
@@ -21,11 +20,5 @@ module RussianPost
     def fetch_operations
       OperationsFactory.build(client.call(barcode: barcode))
     end
-
-    def barcode_is_valid?
-      barcode =~ /\A([A-Z]{2}\d{9}[A-Z]{2})|(\d{14})\z/
-    end
   end
-
-  class InvalidBarcode < ArgumentError; end
 end
