@@ -37,24 +37,19 @@ The `operations` method returns an `Array` of `Operation` structs.
 
 RussianPost makes guesses about current state of the parcel.
 
-Current parcel location:
-
+    # Current parcel location
     parcel.location
 
-Mass:
-
+    # Mass
     parcel.mass
 
-Rank:
-
+    # Rank
     parcel.rank
 
-Recipient:
-
+    # Recipient
     parcel.recipient
 
-Type:
-
+    # Type
     parcel.type
 
 ### Operations API
