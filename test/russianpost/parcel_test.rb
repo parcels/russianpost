@@ -53,4 +53,8 @@ class ParcelMetaTest < MiniTest::Unit::TestCase
     rank = RussianPost::GenericOperationParameter.new(5, "Без разряда")
     assert_equal rank, parcel.rank
   end
+
+  def test_knows_recipient
+    assert_equal "ЕЛЕНА", parcel.recipient
+  end
 end

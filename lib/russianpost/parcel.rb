@@ -27,6 +27,10 @@ module RussianPost
       operations.map{ |o| o.mail_rank }.compact.last
     end
 
+    def recipient
+      operations.map{ |o| o.rcpn }.compact.last
+    end
+
     def type
       operations.last.mail_type
     end
