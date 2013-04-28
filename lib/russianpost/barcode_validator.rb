@@ -1,10 +1,10 @@
 module RussianPost
   class BarcodeValidator
-    attr_reader :barcode
+    attr_reader :barcode, :digits
 
     INTERNATIONAL_FORMAT = /\A([A-Z]{2}\d{9}[A-Z]{2})\Z/
     DOMESTIC_FORMAT      = /\A(\d{14})\Z/
-    WEIGHT_FACTORS       = [8, 6, 4, 2, 3, 5, 9, 7]
+    WEIGHT_FACTORS       = [8, 6, 4, 2, 3, 5, 9, 7, 0]
 
     def self.validate(barcode)
       new(barcode).valid?
@@ -12,23 +12,22 @@ module RussianPost
 
     def initialize(barcode)
       @barcode = barcode
+      @digits  = barcode.digits
     end
 
     def valid?
-      (barcode =~ INTERNATIONAL_FORMAT && checkdigit_matches?) ||
-        barcode =~ DOMESTIC_FORMAT
+      valid_international? || valid_domestic?
     end
 
 
     private
-    
-    def checkdigit_matches?
-      barcode.digits.last == checksum
+
+    def valid_international?
+      barcode =~ INTERNATIONAL_FORMAT && digits.last == checkdigit
     end
-    
-    def checksum
-      product = barcode.digits[0..-2].zip(WEIGHT_FACTORS).map{|i, j| i * j}.inject(:+)
-      mod = (11 - product) % 11
+
+    def valid_domestic?
+      barcode =~ DOMESTIC_FORMAT
     end
 
     def checkdigit
@@ -37,6 +36,11 @@ module RussianPost
       else 
         checksum == 10 ? 0 : 5
       end
+    end
+    
+    def checksum
+      product = digits.zip(WEIGHT_FACTORS)
+      (11 - product.map{|i| i.reduce(:*)}.reduce(:+)) % 11
     end
   end
 end
