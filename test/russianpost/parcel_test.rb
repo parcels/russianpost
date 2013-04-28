@@ -12,7 +12,7 @@ class ParcelTest < MiniTest::Unit::TestCase
 
   def test_returns_empty_array_on_nonexistent_parcel
     VCR.use_cassette("nonexistent_parcel") do
-      parcel = RussianPost::Parcel.new("RR123456789EE")
+      parcel = RussianPost::Parcel.new("RR123456785EE")
       assert_kind_of Array, parcel.operations
       assert parcel.operations.empty?
     end
