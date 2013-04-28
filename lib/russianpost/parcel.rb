@@ -15,6 +15,26 @@ module RussianPost
       @operations ||= fetch_operations
     end
 
+    def location
+      operations.last.operation_address
+    end
+
+    def mass
+      operations.map{ |o| o.mass }.max
+    end
+
+    def rank
+      operations.map{ |o| o.mail_rank }.compact.last
+    end
+
+    def recipient
+      operations.map{ |o| o.rcpn }.compact.last
+    end
+
+    def type
+      operations.last.mail_type
+    end
+
     private
 
     def fetch_operations
