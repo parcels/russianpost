@@ -50,7 +50,7 @@ class ParcelMetaTest < MiniTest::Unit::TestCase
   end
 
   def test_knows_rank
-    rank = RussianPost::GenericOperationParameter.new(5, "Без разряда")
+    rank = RussianPost::GenericOperationParameter.new(0, "Без разряда")
     assert_equal rank, parcel.rank
   end
 
