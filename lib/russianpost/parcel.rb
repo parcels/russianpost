@@ -20,11 +20,11 @@ module RussianPost
     end
 
     def mass
-      operations.map(&:mass).max
+      operations.map{ |o| o.mass }.max
     end
 
     def rank
-      operations.map(&:mail_rank).compact.last
+      operations.map{ |o| o.mail_rank }.compact.last
     end
 
     def type
