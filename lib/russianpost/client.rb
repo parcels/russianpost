@@ -3,11 +3,12 @@ require "savon"
 module RussianPost
   class Client
     attr_reader :savon, :endpoint, :namespace
+
+    ENDPOINT  = "http://voh.russianpost.ru:8080/niips-operationhistory-web/OperationHistory"
+    NAMESPACE = "http://russianpost.org/operationhistory/data"
     
     def initialize
-      @endpoint  = "http://voh.russianpost.ru:8080/niips-operationhistory-web/OperationHistory"
-      @namespace = "http://russianpost.org/operationhistory/data"
-      @savon     = Savon.client(endpoint: endpoint, namespace: namespace, log: false)
+      @savon = Savon.client(endpoint: ENDPOINT, namespace: NAMESPACE, log: false)
     end
 
     def call(opts = {barcode: nil})
