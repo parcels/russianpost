@@ -43,4 +43,9 @@ class ParcelMetaTest < MiniTest::Unit::TestCase
   def test_knows_parcel_mass
     assert_equal 281, parcel.mass
   end
+
+  def test_knows_type
+    type = RussianPost::GenericOperationParameter.new(5, "Мелкий пакет")
+    assert_equal type, parcel.type
+  end
 end

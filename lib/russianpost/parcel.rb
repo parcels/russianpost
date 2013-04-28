@@ -23,6 +23,10 @@ module RussianPost
       operations.map(&:mass).max
     end
 
+    def type
+      operations.last.mail_type
+    end
+
     private
 
     def fetch_operations
