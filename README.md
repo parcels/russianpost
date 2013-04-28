@@ -33,6 +33,30 @@ Fetch operation history for the parcel:
 
 The `operations` method returns an `Array` of `Operation` structs.
 
+### Parcel info
+
+RussianPost makes guesses about current state of the parcel.
+
+Current parcel location:
+
+    parcel.location
+
+Mass:
+
+    parcel.mass
+
+Rank:
+
+    parcel.rank
+
+Recipient:
+
+    parcel.recipient
+
+Type:
+
+    parcel.type
+
 ### Operations API
 
 Each `Operation` responds to the following methods. If there is no information, methods return `nil`. More thorough documentation coming soon.
