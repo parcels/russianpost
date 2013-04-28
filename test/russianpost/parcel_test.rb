@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require "test_helper"
 require "russianpost/parcel"
 
@@ -22,5 +24,39 @@ class ParcelTest < MiniTest::Unit::TestCase
     assert_raises RussianPost::InvalidBarcode do
       RussianPost::Parcel.new("123")
     end
+  end
+end
+
+class ParcelMetaTest < MiniTest::Unit::TestCase
+  attr_reader :parcel
+
+  def setup
+    VCR.use_cassette :valid_barcode do
+      @parcel = RussianPost::Parcel.new("RD025500807SE")
+      parcel.operations
+    end
+  end  
+
+  def test_knows_current_location
+    location = RussianPost::Address.new("127576", "Москва 576")
+    assert_equal location, parcel.location
+  end
+
+  def test_knows_parcel_mass
+    assert_equal 281, parcel.mass
+  end
+
+  def test_knows_type
+    type = RussianPost::GenericOperationParameter.new(5, "Мелкий пакет")
+    assert_equal type, parcel.type
+  end
+
+  def test_knows_rank
+    rank = RussianPost::GenericOperationParameter.new(0, "Без разряда")
+    assert_equal rank, parcel.rank
+  end
+
+  def test_knows_recipient
+    assert_equal "ЕЛЕНА", parcel.recipient
   end
 end
