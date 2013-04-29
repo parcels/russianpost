@@ -5,7 +5,11 @@ module RussianPost
     class << self
       def build(operations_hash)
         if operations_hash
-          operations_hash.map { |o| build_operation(o) }
+          if operations_hash.is_a?(Array)
+            operations_hash.map { |o| build_operation(o) }
+          else
+            build_operation(operations_hash)
+          end
         else
           []
         end
