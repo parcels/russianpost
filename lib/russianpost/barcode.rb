@@ -1,3 +1,4 @@
+require "forwardable"
 require "russianpost/barcode_validator"
 
 module RussianPost
