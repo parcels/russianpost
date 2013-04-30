@@ -6,18 +6,21 @@ class TestClient < MiniTest::Unit::TestCase
     @client = RussianPost::Client.new
   end
 
-  def test_returns_array_of_hashes
-    VCR.use_cassette("valid_barcode") do
-      response = @client.call(barcode: "RD025500807SE")
-      assert_kind_of Array, response
-      assert_kind_of Hash, response[0]
+  def test_returns_array_of_hashes_on_existing_parcel
+    ["RD025500807SE", "LK035658376US"].each do |code|
+      VCR.use_cassette(code) do
+        response = @client.call(barcode: code)
+        assert_kind_of Array, response
+        assert_kind_of Hash, response[0]
+      end
     end
   end
 
-  def test_returns_nil_on_nonexistent_parcel
-    VCR.use_cassette("nonexistent_parcel") do
+  def test_returns_empty_array_on_nonexistent_parcel
+    VCR.use_cassette("RR123456789EE") do
       response = @client.call(barcode: "RR123456789EE")
-      assert_nil response
+      assert_kind_of Array, response
+      assert_empty response
     end
   end
 end
