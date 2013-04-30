@@ -4,15 +4,7 @@ module RussianPost
   module OperationsFactory
     class << self
       def build(operations_hash)
-        if operations_hash
-          if operations_hash.is_a?(Array)
-            operations_hash.map { |o| build_operation(o) }
-          else
-            build_operation(operations_hash)
-          end
-        else
-          []
-        end
+        operations_hash.map { |o| build_operation(o) }
       end
 
       def build_operation(operation_hash)
