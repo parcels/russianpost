@@ -18,8 +18,9 @@ module RussianPost
     def call(opts = {barcode: nil})
       message = { "wsdl:Barcode" => opts[:barcode], "wsdl:MessageType" => "0" }
       response = savon.call("OperationHistoryRequest", message: message)
+      result = response.to_hash[:operation_history_data][:history_record]
 
-      response.to_hash[:operation_history_data][:history_record]
+      result.kind_of?(Array) ? result : [result].compact
     end
   end
 end
