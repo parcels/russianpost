@@ -6,7 +6,7 @@ require "russianpost/parcel"
 module RussianPost
   class ParcelTest < MiniTest::Unit::TestCase
     def test_returns_array_of_operations
-      VCR.use_cassette :valid_barcode do
+      VCR.use_cassette("RD025500807SE") do
         parcel = Parcel.new("RD025500807SE")
         assert_kind_of Array, parcel.operations
         assert_kind_of Operation, parcel.operations[0]
@@ -14,7 +14,7 @@ module RussianPost
     end
 
     def test_returns_empty_array_on_nonexistent_parcel
-      VCR.use_cassette("nonexistent_parcel") do
+      VCR.use_cassette("RR123456785EE") do
         parcel = Parcel.new("RR123456785EE")
         assert_kind_of Array, parcel.operations
         assert parcel.operations.empty?
@@ -32,7 +32,7 @@ module RussianPost
     attr_reader :parcel
 
     def setup
-      VCR.use_cassette :valid_barcode do
+      VCR.use_cassette("RD025500807SE") do
         @parcel = Parcel.new("RD025500807SE")
         parcel.operations
       end

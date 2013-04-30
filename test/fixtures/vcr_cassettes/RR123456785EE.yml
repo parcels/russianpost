@@ -7,7 +7,7 @@ http_interactions:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://russianpost.org/operationhistory/data"
-        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><wsdl:OperationHistoryRequest><wsdl:Barcode>RR123456789EE</wsdl:Barcode><wsdl:MessageType>0</wsdl:MessageType></wsdl:OperationHistoryRequest></env:Body></env:Envelope>
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><wsdl:OperationHistoryRequest><wsdl:Barcode>RR123456785EE</wsdl:Barcode><wsdl:MessageType>0</wsdl:MessageType></wsdl:OperationHistoryRequest></env:Body></env:Envelope>
     headers:
       Soapaction:
       - '"OperationHistoryRequest"'
@@ -36,11 +36,11 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Sat, 20 Apr 2013 22:10:07 GMT
+      - Tue, 30 Apr 2013 06:41:51 GMT
     body:
       encoding: UTF-8
       string: <?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><ns2:OperationHistoryData
         xmlns:ns2="http://russianpost.org/operationhistory/data"/></S:Body></S:Envelope>
     http_version: 
-  recorded_at: Sat, 20 Apr 2013 22:10:13 GMT
+  recorded_at: Tue, 30 Apr 2013 06:41:53 GMT
 recorded_with: VCR 2.4.0
