@@ -54,7 +54,7 @@ RussianPost makes guesses about current state of the parcel.
 
 ### Operations API
 
-Each `Operation` responds to the following methods. If there is no information, methods return `nil`. More thorough documentation coming soon.
+Each `Operation` responds to the following methods. If there is no information, methods return `nil`. See the [wiki](https://github.com/artemshitov/russianpost/wiki) for a list of what else can be returned.
 
 #### Address parameters
 
