@@ -109,8 +109,8 @@ Each `Operation` responds to the following methods. If there is no information, 
     mail_rank.name                   #=> String
 
     post_mark                        #=> RussianPost::GenericOperationParameter (Struct)
-    mail_rank.id                     #=> Fixnum
-    mail_rank.name                   #=> String
+    post_mark.id                     #=> Fixnum
+    post_mark.name                   #=> String
     
     mail_type                        #=> RussianPost::GenericOperationParameter (Struct)
     mail_type.id                     #=> Fixnum
