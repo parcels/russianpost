@@ -20,15 +20,15 @@ module RussianPost
     end
 
     def mass
-      operations.map{ |o| o.mass }.max unless operations.empty?
+      operations.map{ |o| o.mass }.max
     end
 
     def rank
-      operations.map{ |o| o.mail_rank }.compact.last unless operations.empty?
+      operations.map{ |o| o.mail_rank }.compact.last
     end
 
     def recipient
-      operations.map{ |o| o.rcpn }.compact.last unless operations.empty?
+      operations.map{ |o| o.rcpn }.compact.last
     end
 
     def type
