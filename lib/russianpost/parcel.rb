@@ -16,7 +16,7 @@ module RussianPost
     end
 
     def location
-      operations.last.operation_address
+      operations.last.operation_address unless operations.empty?
     end
 
     def mass
@@ -32,7 +32,7 @@ module RussianPost
     end
 
     def type
-      operations.last.mail_type
+      operations.last.mail_type unless operations.empty?
     end
 
     private
