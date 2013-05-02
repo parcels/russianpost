@@ -16,23 +16,23 @@ module RussianPost
     end
 
     def location
-      operations.last.operation_address
+      operations.last.operation_address unless operations.empty?
     end
 
     def mass
-      operations.map{ |o| o.mass }.max
+      operations.map{ |o| o.mass }.max unless operations.empty?
     end
 
     def rank
-      operations.map{ |o| o.mail_rank }.compact.last
+      operations.map{ |o| o.mail_rank }.compact.last unless operations.empty?
     end
 
     def recipient
-      operations.map{ |o| o.rcpn }.compact.last
+      operations.map{ |o| o.rcpn }.compact.last unless operations.empty?
     end
 
     def type
-      operations.last.mail_type
+      operations.last.mail_type unless operations.empty?
     end
 
     private
