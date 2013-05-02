@@ -12,7 +12,7 @@ To install gem stand-alone:
 
 To use gem in a Rails app, add the following to your `Gemfile`:
 
-    gem "russianpost", "~> 0.4.2"
+    gem "russianpost", "~> 0.4.3"
 
 This gem uses [Savon](http://savonrb.com/), which in turn uses [HTTPI](https://github.com/savonrb/httpi) internally. HTTPI chooses the best HTTP library of those you have installed. For the fastest results, make sure you add [Curb](https://github.com/taf2/curb) to your `Gemfile`:
 
