@@ -60,5 +60,14 @@ module RussianPost
     def test_knows_recipient
       assert_equal "ЕЛЕНА", parcel.recipient
     end
+
+    def test_meta_methods_dont_fail_when_no_operations
+      VCR.use_cassette("RR123456785EE") do
+        parcel = Parcel.new("RR123456785EE")
+        [:location, :mass, :type, :rank, :recipient].each do |m|
+          assert_nil parcel.send(m)
+        end
+      end
+    end
   end
 end
