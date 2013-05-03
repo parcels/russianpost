@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.org/artemshitov/russianpost.png?branch=master)](https://travis-ci.org/artemshitov/russianpost) [![Code Climate](https://codeclimate.com/github/artemshitov/russianpost.png)](https://codeclimate.com/github/artemshitov/russianpost)
 
-Ruby wrapper around Russian Post package tracking SOAP API. Works on a per-package basis (contrary to the bulk ticket-based API). Use it at your own risk, since the API may appear unstable and require authorization in future.
+Ruby client for Russian Post package tracking SOAP API. Works on a per-package basis (contrary to the bulk ticket-based API). The client tries to be smart and fills gaps in the information provided by Russian Post using external knowledge.
+
+Use it at your own risk, since the API may appear unstable and require authorization in future.
 
 ## Installation
 
