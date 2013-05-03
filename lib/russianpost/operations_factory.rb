@@ -1,9 +1,12 @@
+require "iso3166_ru"
 require "russianpost/operation"
+require "russianpost/country_factory"
 
 module RussianPost
   module OperationsFactory
     class << self
       def build(operations_hash)
+        @country_list = Iso3166Ru::CountryList.new
         operations_hash.map { |o| build_operation(o) }
       end
 
@@ -50,12 +53,7 @@ module RussianPost
 
       def process_country(key, value)
         if [:mail_direct, :country_from, :country_oper].include? key
-          RussianPost::Country.new(
-            value[:id] ? value[:id].to_i : nil,
-            value[:code_2a],
-            value[:code_3a],
-            value[:name_ru],
-            value[:name_en])
+          RussianPost::CountryFactory.build(value, country_list: @country_list)
         end
       end
 
