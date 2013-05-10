@@ -12,7 +12,7 @@ module RussianPost
 
     def initialize(barcode)
       @barcode = barcode
-      @digits  = barcode.to_s[/\d+/].split("").map { |d| d.to_i }
+      @digits  = barcode[/\d+/].split("").map { |d| d.to_i }
     end
 
     def valid?

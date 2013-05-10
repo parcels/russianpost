@@ -18,7 +18,7 @@ module RussianPost
     end
 
     def valid?
-      BarcodeValidator.validate(self)
+      BarcodeValidator.validate(barcode)
     end
   end
 end
