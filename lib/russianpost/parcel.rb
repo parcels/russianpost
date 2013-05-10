@@ -38,7 +38,10 @@ module RussianPost
     private
 
     def fetch_operations
+      raise InvalidBarcode unless barcode.valid?
       OperationsFactory.build(client.call(barcode: barcode))
     end
   end
+
+  class InvalidBarcode < ArgumentError; end
 end

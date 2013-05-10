@@ -11,23 +11,14 @@ module RussianPost
 
     def initialize(barcode)
       @barcode = barcode.strip.upcase
-      raise InvalidBarcode unless valid?
     end
 
     def to_s
       barcode
     end
 
-    def digits
-      barcode[/\d+/].split("").map { |d| d.to_i }
-    end
-
-    private
-
     def valid?
       BarcodeValidator.validate(self)
     end
   end
-
-  class InvalidBarcode < ArgumentError; end
 end
