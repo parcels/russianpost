@@ -12,7 +12,7 @@ module RussianPost
 
     def initialize(barcode)
       @barcode = barcode
-      @digits  = barcode.digits
+      @digits  = barcode[/\d+/].split("").map { |d| d.to_i }
     end
 
     def valid?
@@ -23,11 +23,11 @@ module RussianPost
     private
 
     def valid_international?
-      barcode =~ INTERNATIONAL_FORMAT && digits.last == checkdigit
+      (barcode =~ INTERNATIONAL_FORMAT && digits.last == checkdigit) || false
     end
 
     def valid_domestic?
-      barcode =~ DOMESTIC_FORMAT
+      barcode =~ DOMESTIC_FORMAT || false
     end
 
     def checkdigit
