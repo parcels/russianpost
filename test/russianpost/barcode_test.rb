@@ -8,17 +8,13 @@ module RussianPost
       assert_equal "bar RD025500807SE", "bar #{barcode}"
     end
 
-    def test_raises_on_invalid_barcode
+    def test_validates_barcode
       ["123", "RR123456789EE"].each do |barcode|
-        assert_raises InvalidBarcode do
-          Barcode.new(barcode)
-        end
+        refute Barcode.new(barcode).valid?
       end
-    end
 
-    def test_doesnt_raise_on_valid_barcode
       ["RD025500807SE", "12345678901234"].each do |barcode|
-          Barcode.new(barcode)
+        assert Barcode.new(barcode).valid?
       end
     end
   end

@@ -23,7 +23,7 @@ module RussianPost
 
     def test_raises_error_on_invalid_barcode
       assert_raises InvalidBarcode do
-        Parcel.new("123")
+        Parcel.new("123").operations
       end
     end
   end
