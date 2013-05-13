@@ -4,7 +4,7 @@ require "test_helper"
 require "russianpost/parcel"
 
 module RussianPost
-  class ParcelTest < MiniTest::Unit::TestCase
+  class ParcelTest < Minitest::Test
     def test_returns_array_of_operations
       VCR.use_cassette("RD025500807SE") do
         parcel = Parcel.new("RD025500807SE")
@@ -28,7 +28,7 @@ module RussianPost
     end
   end
 
-  class ParcelMetaTest < MiniTest::Unit::TestCase
+  class ParcelMetaTest < Minitest::Test
     attr_reader :parcel
 
     def setup

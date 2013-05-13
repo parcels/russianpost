@@ -1,7 +1,7 @@
 require "test_helper"
 require "russianpost/client"
 
-class TestClient < MiniTest::Unit::TestCase
+class TestClient < Minitest::Test
   def setup
     @client = RussianPost::Client.new
   end

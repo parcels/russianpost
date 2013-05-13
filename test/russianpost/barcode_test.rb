@@ -2,7 +2,7 @@ require "test_helper"
 require "russianpost/barcode"
 
 module RussianPost
-  class BarcodeTest < MiniTest::Unit::TestCase
+  class BarcodeTest < Minitest::Test
     def test_implicitly_converts_to_string
       barcode = Barcode.new("RD025500807SE")
       assert_equal "bar RD025500807SE", "bar #{barcode}"
