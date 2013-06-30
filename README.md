@@ -59,10 +59,10 @@ RussianPost makes guesses about current state of the parcel.
 You can use the included barcode validator separately. It not only validates the format of a barcode, but also calculates check digits and tests barcodes against them.
 
     barcode = RussianPost::Barcode.new("EC123456789RU")
-    barcode.valid #=> false
+    barcode.valid? #=> false
 
     barcode = RussianPost::Barcode.new("RD025500807SE")
-    barcode.valid #=> true
+    barcode.valid? #=> true
 
 ### Operations API
 
