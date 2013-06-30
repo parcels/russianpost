@@ -13,7 +13,7 @@ module RussianPost
         refute Barcode.new(barcode).valid?
       end
 
-      ["RD025500807SE", "12345678901234"].each do |barcode|
+      ["RD025500807SE", "62009147017544"].each do |barcode|
         assert Barcode.new(barcode).valid?
       end
     end
