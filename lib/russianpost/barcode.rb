@@ -1,24 +1,13 @@
-require "forwardable"
-require "russianpost/barcode_validator"
+require 'russianpost/barcode/international'
+require 'russianpost/barcode/domestic'
+require 'russianpost/barcode/invalid'
 
 module RussianPost
-  class Barcode
-    extend Forwardable
-
-    def_delegator :barcode, :=~
-
-    attr_reader :barcode
-
-    def initialize(barcode)
-      @barcode = barcode.strip.upcase
-    end
-
-    def to_s
-      barcode
-    end
-
-    def valid?
-      BarcodeValidator.validate(barcode)
+  module Barcode
+    def self.new(barcode)
+      [International, Domestic, Invalid].each do |klass|
+        return klass.new(barcode) if barcode =~ klass.format
+      end
     end
   end
 end
