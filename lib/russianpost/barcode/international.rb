@@ -1,4 +1,5 @@
 require 'russianpost/barcode/base'
+require 'iso3166_ru'
 
 module RussianPost
   module Barcode
@@ -9,7 +10,15 @@ module RussianPost
         /\A([A-Z]{2}\d{9}[A-Z]{2})\Z/
       end
 
+      def valid?
+        super && country_exists?
+      end
+
       private
+
+      def country_exists?
+        !Iso3166Ru.find_by(alpha2: barcode[-2..-1]).nil?
+      end
 
       def checkdigit
         checksum < 11 ? checksum % 10 : 5
