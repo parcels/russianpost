@@ -1,5 +1,5 @@
-require "iso3166_ru"
-require "russianpost/operation"
+require 'iso3166_ru'
+require 'russianpost/operation'
 
 module RussianPost
   module CountryFactory
