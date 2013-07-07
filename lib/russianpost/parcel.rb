@@ -8,7 +8,7 @@ module RussianPost
 
     def initialize(barcode, opts = {})
       @barcode = Barcode.new(barcode)
-      @client  = (opts[:client] || Client).new
+      @client  = (opts[:client] || Client).instance
     end
 
     def operations
