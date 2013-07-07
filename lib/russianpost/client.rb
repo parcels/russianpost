@@ -1,7 +1,10 @@
 require "savon"
+require 'singleton'
 
 module RussianPost
   class Client
+    include Singleton
+    
     attr_reader :savon, :endpoint, :namespace
 
     ENDPOINT  = "http://voh.russianpost.ru:8080/niips-operationhistory-web/OperationHistory"

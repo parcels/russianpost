@@ -3,7 +3,7 @@ require "russianpost/client"
 
 class TestClient < Minitest::Test
   def setup
-    @client = RussianPost::Client.new
+    @client = RussianPost::Client.instance
   end
 
   def test_returns_array_of_hashes_on_existing_parcel
