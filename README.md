@@ -1,6 +1,6 @@
 # Russian Post API Client
 
-[![Build Status](https://travis-ci.org/artemshitov/russianpost.png?branch=master)](https://travis-ci.org/artemshitov/russianpost) [![Code Climate](https://codeclimate.com/github/artemshitov/russianpost.png)](https://codeclimate.com/github/artemshitov/russianpost)
+[![Build Status](https://travis-ci.org/artemshitov/russianpost.png?branch=master)](https://travis-ci.org/artemshitov/russianpost) [![Code Climate](https://codeclimate.com/github/artemshitov/russianpost.png)](https://codeclimate.com/github/artemshitov/russianpost) [![Gem Version](https://badge.fury.io/rb/russianpost.png)](http://badge.fury.io/rb/russianpost)
 
 Ruby client for Russian Post package tracking SOAP API. Works on a per-package basis (contrary to the bulk ticket-based API). The client tries to be smart and fills gaps in the information provided by Russian Post using external knowledge.
 
