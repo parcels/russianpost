@@ -6,7 +6,7 @@ module RussianPost
   module OperationsFactory
     class << self
       def build(operations_hash)
-        @country_list = Iso3166Ru::CountryList.new
+        @country_list = Iso3166Ru
         operations_hash.map { |o| build_operation(o) }
       end
 
