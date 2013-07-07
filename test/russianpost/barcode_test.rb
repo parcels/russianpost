@@ -9,7 +9,7 @@ module RussianPost
     end
 
     def test_validates_barcode
-      ["123", "RR123456789EE"].each do |barcode|
+      ["123", "RR123456789EE", "RD025500807SP"].each do |barcode|
         refute Barcode.new(barcode).valid?
       end
 
