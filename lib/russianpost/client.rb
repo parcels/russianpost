@@ -1,4 +1,4 @@
-require "savon"
+require 'savon'
 require 'singleton'
 
 module RussianPost
@@ -7,8 +7,8 @@ module RussianPost
     
     attr_reader :savon, :endpoint, :namespace
 
-    ENDPOINT  = "http://voh.russianpost.ru:8080/niips-operationhistory-web/OperationHistory"
-    NAMESPACE = "http://russianpost.org/operationhistory/data"
+    ENDPOINT  = 'http://voh.russianpost.ru:8080/niips-operationhistory-web/OperationHistory'
+    NAMESPACE = 'http://russianpost.org/operationhistory/data'
     
     def initialize(opts = {})
       @savon = Savon.client(
@@ -19,8 +19,8 @@ module RussianPost
     end
 
     def call(opts = {barcode: nil})
-      message = { "wsdl:Barcode" => opts[:barcode], "wsdl:MessageType" => "0" }
-      response = savon.call("OperationHistoryRequest", message: message)
+      message = { 'wsdl:Barcode' => opts[:barcode], 'wsdl:MessageType' => '0' }
+      response = savon.call('OperationHistoryRequest', message: message)
       result = response.to_hash[:operation_history_data][:history_record]
 
       result.kind_of?(Array) ? result : [result].compact

@@ -1,6 +1,6 @@
-require "russianpost/client"
-require "russianpost/operations_factory"
-require "russianpost/barcode"
+require 'russianpost/client'
+require 'russianpost/operations_factory'
+require 'russianpost/barcode'
 
 module RussianPost
   class Parcel

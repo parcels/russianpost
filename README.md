@@ -14,20 +14,20 @@ To install gem stand-alone:
 
 To use gem in a Rails app, add the following to your `Gemfile`:
 
-    gem "russianpost", "~> 0.6.0"
+    gem 'russianpost', '~> 0.6.0'
 
 This gem uses [Savon](http://savonrb.com/), which in turn uses [HTTPI](https://github.com/savonrb/httpi) internally. HTTPI chooses the best HTTP library of those you have installed. For the fastest results add [Curb](https://github.com/taf2/curb) to your `Gemfile`:
 
-    gem "curb"
-    gem "russianpost"
+    gem 'curb'
+    gem 'russianpost'
 
-If you use RussianPost outside Rails, `require "curb"` before requiring RussianPost.
+If you use RussianPost outside Rails, `require 'curb'` before requiring RussianPost.
 
 ## Usage
 
 Initialize a parcel object, passing the package barcode to the constructor:
 
-    parcel = RussianPost::Parcel.new("EC123456789RU")
+    parcel = RussianPost::Parcel.new('EC123456789RU')
 
 Fetch operation history for the parcel:
 
@@ -58,10 +58,10 @@ RussianPost makes guesses about current state of the parcel.
 
 You can use the included barcode validator separately. It not only validates the format of a barcode, but also calculates check digits and tests barcodes against them.
 
-    barcode = RussianPost::Barcode.new("EC123456789RU")
+    barcode = RussianPost::Barcode.new('EC123456789RU')
     barcode.valid? #=> false
 
-    barcode = RussianPost::Barcode.new("RD025500807SE")
+    barcode = RussianPost::Barcode.new('RD025500807SE')
     barcode.valid? #=> true
 
 ### Operations API
