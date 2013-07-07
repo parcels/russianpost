@@ -19,7 +19,7 @@ module RussianPost
       end
 
       def valid?
-        barcode =~ self.class.format && digits.last == checkdigit
+        (barcode =~ self.class.format || false) && digits.last == checkdigit
       end
 
       def to_s
