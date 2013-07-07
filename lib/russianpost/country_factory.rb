@@ -4,7 +4,7 @@ require "russianpost/operation"
 module RussianPost
   module CountryFactory
     def self.build(country_config, opts = {})
-      country_list = opts[:country_list] || Iso3166Ru::CountryList.new
+      country_list = opts[:country_list] || Iso3166Ru
       proxy        = country_list.find_by(iso: country_config[:id])
       
       RussianPost::Country.new(
